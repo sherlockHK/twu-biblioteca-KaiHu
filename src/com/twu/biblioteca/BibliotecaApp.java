@@ -31,7 +31,7 @@ public class BibliotecaApp {
         System.out.println("Main menu:");
         System.out.println("1.Checkout book");
         System.out.println("2.Return book");
-        System.out.println("Please make a choice(1-2):");
+        System.out.println("Please make a choice(1 or 2):");
         choice = scanner.nextInt();
     }
 }

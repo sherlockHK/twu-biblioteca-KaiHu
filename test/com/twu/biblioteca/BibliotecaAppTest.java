@@ -9,6 +9,7 @@ public class BibliotecaAppTest {
     @Test
     public void test_showMenu() throws Exception {
         BibliotecaApp.showMenu();
+
     }
 
     @Test
