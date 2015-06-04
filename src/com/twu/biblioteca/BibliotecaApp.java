@@ -6,16 +6,23 @@ public class BibliotecaApp {
     private static Scanner scanner= new Scanner(System.in);
     private static int choice;
     private static Library library = new Library();
+    private static Customer customer = new Customer();
 
     public static void main(String[] args) {
         BibliotecaApp.showMenu();
 
+        makeChoice();
+    }
+
+    private static void makeChoice() {
         if(choice == 1){
             showBookList();
         }else if (choice == 2){
             showReturnBooks();
         }else {
             System.out.println("Select a valid option!");
+            choice = scanner.nextInt();
+            makeChoice();
         }
     }
 
@@ -23,8 +30,7 @@ public class BibliotecaApp {
         library.bookList();
     }
 
-    private static void showReturnBooks() {
-    }
+    private static void showReturnBooks() {}
 
     public static void showMenu() {
         System.out.println("********Welcome to The Bangalore Public Library!********");
