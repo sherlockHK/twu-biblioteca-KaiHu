@@ -29,8 +29,10 @@ public class Library {
         for (Book book : bookList){
             System.out.println(book.getId()+"."+book.getName()+"  "+book.getAuthor()+"  "+book.getPublishedYear());
         }
-
+        System.out.println("Please make a choice(1-"+bookList.size()+"):");
         int choice = scanner.nextInt();
     }
+
+
 
 }
