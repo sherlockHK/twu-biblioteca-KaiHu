@@ -45,6 +45,8 @@ public class BibliotecaApp {
             case 3:
                 //returnBooks
                 break;
+            case 4:
+                System.exit(0);
             default:
                 System.out.print("That is a invalid option");
         }
