@@ -9,7 +9,6 @@ import java.util.Scanner;
 public class Customer {
     private ArrayList<Book> borrowedBooks = new ArrayList<Book>();
 
-
     public ArrayList<Book> getBorrowedBooks() {
         return borrowedBooks;
     }
