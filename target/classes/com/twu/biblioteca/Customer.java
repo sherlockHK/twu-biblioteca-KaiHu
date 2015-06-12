@@ -18,7 +18,7 @@ public class Customer {
     public void borrowedBookList() {
         System.out.println("********customer booklist********");
         for(Book book : borrowedBooks){
-            System.out.println(borrowedBooks.indexOf(book)+1+"."+book.bookInfo());
+//            System.out.println(borrowedBooks.indexOf(book)+1+"."+book.bookInfo());
         }
         System.out.println(borrowedBooks.size()+1+"."+"Quit!");
         System.out.println("Please make a choice(1-"+borrowedBooks.size()+"):");

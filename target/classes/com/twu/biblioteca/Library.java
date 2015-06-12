@@ -34,7 +34,7 @@ public class Library {
     private void showBookList() {
         System.out.println("********biblioteca booklist********");
         for (Book book : bookList){
-            System.out.println(bookList.indexOf(book)+1+"."+book.bookInfo());
+//            System.out.println(bookList.indexOf(book)+1+"."+book.bookInfo());
         }
         System.out.println(bookList.size()+1+"."+"Quit!");
         System.out.println("Please make a choice(1-"+bookList.size()+"):");

@@ -18,27 +18,23 @@ public class Book {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
 
     public String getPublishedYear() {
         return publishedYear;
     }
 
-    public void setPublishedYear(String publishedYear) {
-        this.publishedYear = publishedYear;
-    }
 
-    public String bookInfo(){
-        return this.getName()+"  "+this.getAuthor()+"  "+this.getPublishedYear();
+//    public String bookInfo(){
+//        return this.getName()+"  "+this.getAuthor()+"  "+this.getPublishedYear();
+//    }
+
+    @Override
+    public String toString() {
+        return this.getName()+" "+this.getAuthor()+" "+this.getPublishedYear();
     }
 }
