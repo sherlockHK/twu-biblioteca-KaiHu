@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 /**
  * Created by Administrator on 2015/6/11.
@@ -30,5 +31,12 @@ public class BookStoreTest {
     @Test
     public void bookList_should_be_5() throws Exception {
         assertEquals(5,bookStore.bookCount());
+    }
+
+    @Test
+    public void allBookList_should_add_one_after_reserveBook() throws Exception {
+        Book book = new Book("A","B","C");
+        bookStore.reserveBook(book);
+        assertEquals(6,bookStore.bookCount());
     }
 }

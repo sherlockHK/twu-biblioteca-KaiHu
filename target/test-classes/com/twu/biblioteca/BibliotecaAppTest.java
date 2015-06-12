@@ -26,7 +26,6 @@ public class BibliotecaAppTest {
 
     @Before
     public void before(){
-//        console = System.out;
         baos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(baos));
         app = new BibliotecaApp();
@@ -41,7 +40,7 @@ public class BibliotecaAppTest {
     @Test
     public void testShowMenu() throws Exception {
         app.showMenu();
-        assertThat(baos.toString(), containsString("mainMenu"));
+        assertThat(baos.toString(), containsString("Main menu"));
     }
 
 

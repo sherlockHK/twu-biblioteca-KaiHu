@@ -14,6 +14,15 @@ public class CustomerInput {
 
     public int makeChoice() {
         System.out.println("Please enter your choice:");
+        return chooseNum();
+    }
+
+    public int chooseBook(){
+        System.out.println("Select a book with index:");
+        return chooseNum();
+    }
+
+    private int chooseNum() {
         int choice = scanner.nextInt();
         return choice;
     }

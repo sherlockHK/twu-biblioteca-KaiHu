@@ -37,4 +37,8 @@ public class BookStore {
     public int bookCount(){
         return bookList.size();
     }
+
+    public void reserveBook(Book book) {
+        bookList.add(book);
+    }
 }

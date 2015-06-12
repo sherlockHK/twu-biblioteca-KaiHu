@@ -28,9 +28,9 @@ public class CustomerInputTest {
     @Test
     public void testMakeChoice() throws Exception {
         int choice = customerInput.makeChoice();
-//        Scanner scanner = mock(Scanner.class);
-//        Mockito.when(scanner.nextInt())
-//                .thenReturn(1);
+        Scanner scanner = mock(Scanner.class);
+        Mockito.when(scanner.nextInt())
+                .thenReturn(1);
         assertEquals(1, choice);
     }
 }
