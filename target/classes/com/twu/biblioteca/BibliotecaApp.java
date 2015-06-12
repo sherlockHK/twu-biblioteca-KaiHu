@@ -5,14 +5,14 @@ public class BibliotecaApp {
     private static LibraryMenu menu;
     private Customer customer;
     private BookStore bookStore;
-    private PrintToConsole printToConsole;
+    private ConsolePrinter consolePrinter;
 
     public BibliotecaApp() {
         input = new CustomerInput();
         menu = new LibraryMenu();
         customer = new Customer();
         bookStore = new BookStore();
-        printToConsole = new PrintToConsole();
+        consolePrinter = new ConsolePrinter();
     }
 
     public static void main(String[] args) {
@@ -32,8 +32,8 @@ public class BibliotecaApp {
     }
 
     public void showMenu() {
-        printToConsole.print("Main menu:");
-        printToConsole.printList(menu.getOptions());
+        consolePrinter.print("Main menu:");
+        consolePrinter.printList(menu.getOptions());
     }
 
     private int menuChoice() {
@@ -61,28 +61,28 @@ public class BibliotecaApp {
     }
 
     private void showAllBooks(){
-        printToConsole.print("BookList:");
-        printToConsole.printList(bookStore.allBookList());
+        consolePrinter.print("BookList:");
+        consolePrinter.printList(bookStore.allBookList());
     }
 
     private void showLoanBooks(){
-        printToConsole.print("LoanBooks:");
-        printToConsole.printList(customer.getBorrowedBooks());
+        consolePrinter.print("LoanBooks:");
+        consolePrinter.printList(customer.getBorrowedBooks());
     }
 
     private void checkoutBook(int choice) {
         if (isChoiceValid(bookStore.bookCount(),choice)){
             customer.borrowBook(bookStore.allBookList().get(choice - 1));
             bookStore.checkoutBook(choice);
-            printToConsole.print("Thank you !Enjoy the book!");
+            consolePrinter.print("Thank you !Enjoy the book!");
         }
     }
 
     private void returnBookToBookStore(int choice) {
         if (isChoiceValid(customer.getBorrowedBooks().size(),choice)){
-            customer.returnBook(choice-1);
+            customer.returnBook(choice - 1);
             bookStore.reserveBook(bookStore.allBookList().get(choice - 1));
-            printToConsole.print("Thank you for returning the book!");
+            consolePrinter.print("Thank you for returning the book!");
         }
     }
 
@@ -90,11 +90,11 @@ public class BibliotecaApp {
         if (choice>=1 && choice < optionsCount+1){
             return true;
         }if (choice == optionsCount+1){
-            printToConsole.print("System Exit!");
+            consolePrinter.print("System Exit!");
             System.exit(0);
             return false;
         }else {
-            printToConsole.print("Select a valid option!");
+            consolePrinter.print("Select a valid option!");
             return false;
         }
     }

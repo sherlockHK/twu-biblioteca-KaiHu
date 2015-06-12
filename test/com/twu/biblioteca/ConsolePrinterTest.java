@@ -12,20 +12,20 @@ import static org.junit.Assert.assertThat;
 /**
  * Created by Administrator on 2015/6/12.
  */
-public class PrintToConsoleTest {
+public class ConsolePrinterTest {
     private ByteArrayOutputStream baos;
-    private PrintToConsole printToConsole;
+    private ConsolePrinter consolePrinter;
 
     @Before
     public void before(){
         baos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(baos));
-        printToConsole = new PrintToConsole();
+        consolePrinter = new ConsolePrinter();
     }
 
     @Test
     public void testPrint() throws Exception {
-        printToConsole.print("test");
+        consolePrinter.print("test");
         assertThat(baos.toString(),containsString("test"));
     }
 
@@ -33,7 +33,7 @@ public class PrintToConsoleTest {
     public void testPrintToConsole() throws Exception {
         ArrayList<Book> booklist = new ArrayList<Book>();
         booklist.add(new Book("a","b","c"));
-        printToConsole.printList(booklist);
+        consolePrinter.printList(booklist);
         assertThat(baos.toString(), containsString("Quit"));
     }
 }
