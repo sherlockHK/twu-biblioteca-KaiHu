@@ -40,8 +40,8 @@ public class Customer implements BorrowingAuthority,DisplayInformationAuhority,C
 
     @Override
     public String customerInformation(){
-        return "************Customer Information************"+
-                "Name:"+this.name+"\n"+"Email:"+this.emailAdress+"\n"+"PhoneNumber:"+this.phoneNumber;
+        return "************Customer Information************"+"\n"+
+                "Name:"+this.name+"\n"+"Email:"+this.emailAdress+"\n"+"PhoneNumber:"+this.phoneNumber+"\n";
     }
 
     @Override

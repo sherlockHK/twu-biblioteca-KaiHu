@@ -7,12 +7,13 @@ import com.twu.biblioteca.util.CustomerInput;
 import java.util.ArrayList;
 
 public class BibliotecaApp {
-    private CustomerInput input;
+    private static CustomerInput input;
     private static LibraryMenu menu;
-    private Customer customer;
+    private static Customer customer;
     private BookStore bookStore;
     private MovieStore movieStore;
     private ConsolePrinter consolePrinter;
+    private static boolean isLogin;
 
     public BibliotecaApp() {
         input = new CustomerInput();
@@ -21,18 +22,26 @@ public class BibliotecaApp {
         bookStore = new BookStore();
         movieStore = new MovieStore();
         consolePrinter = new ConsolePrinter();
+        isLogin = false;
     }
 
     public static void main(String[] args) {
         BibliotecaApp app = new BibliotecaApp();
         app.welcome();
 
-        while (true) {
+        isLogin = login();
+        while (isLogin) {
             app.showMenu();
-            int choice = app.menuChoice();
+            int choice = app.input.makeChoice();
             if (app.isChoiceValid(menu.getOptions().size(), choice))
                 app.handleWithChoice(choice);
-        }
+        }System.out.println("Library number or password is wrong!");
+    }
+
+    private static boolean login(){
+        int number = input.inputLibraryNumber();
+        String pw = input.inputPassword();
+        return customer.loginAuthenticate(number,pw);
     }
 
     public void welcome(){
@@ -42,10 +51,6 @@ public class BibliotecaApp {
     public void showMenu() {
         consolePrinter.print("Main menu:");
         consolePrinter.printList(menu.getOptions());
-    }
-
-    private int menuChoice() {
-        return input.makeChoice();
     }
 
     private void handleWithChoice(int choice){
@@ -67,6 +72,7 @@ public class BibliotecaApp {
                 returnBack(selection);
                 break;
             case 4:
+                consolePrinter.print(customer.customerInformation());
                 break;
         }
     }
@@ -91,23 +97,24 @@ public class BibliotecaApp {
             customer.borrowItem(store.itemList().get(choice - 1));
             store.checkoutItem(choice);
             if (store.getClass().equals(BookStore.class))
-                consolePrinter.print("Thank you !Enjoy the book!");
+                consolePrinter.print("Thank you !Enjoy the book!"+"\n");
             else if (store.getClass().equals(MovieStore.class))
-                consolePrinter.print("Thank you !Enjoy the movie!");
+                consolePrinter.print("Thank you !Enjoy the movie!"+"\n");
         }
     }
 
     private void returnBack(int choice) {
         ArrayList<Item> items = customer.getBorrowedItems();
-        if (isChoiceValid(items.size(),choice))
+        if (isChoiceValid(items.size(),choice)){
             if (items.get(choice-1).getClass().equals(Book.class)){
                 bookStore.reserveItem(items.get(choice - 1)); //
-                consolePrinter.print("Thank you for returning the book!");
+                consolePrinter.print("Thank you for returning the book!"+"\n");
             }else if (items.get(choice-1).getClass().equals(Movie.class)){
                 movieStore.reserveItem(items.get(choice - 1)); //
-                consolePrinter.print("Thank you for returning the movie!");
+                consolePrinter.print("Thank you for returning the movie!"+"\n");
             }
             customer.returnItem(choice - 1);
+        }
     }
 
     private boolean isChoiceValid(int optionsCount,int choice){
@@ -122,6 +129,4 @@ public class BibliotecaApp {
             return false;
         }
     }
-
-
 }

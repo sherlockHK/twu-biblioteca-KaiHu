@@ -31,4 +31,14 @@ public class CustomerInput {
         System.out.println("Select a book with index:");
         return chooseNum();
     }
+
+    public int inputLibraryNumber(){
+        System.out.println("Please enter your library number:");
+        return scanner.nextInt();
+    }
+
+    public String inputPassword(){
+        System.out.println("Please enter your password:");
+        return scanner.next();
+    }
 }

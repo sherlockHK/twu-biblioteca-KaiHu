@@ -18,6 +18,7 @@ public class LibraryMenu {
         options.add(MenuOption.checkoutBook);
         options.add(MenuOption.checkoutMoive);
         options.add(MenuOption.returnBack);
+        options.add(MenuOption.information);
 
     }
 

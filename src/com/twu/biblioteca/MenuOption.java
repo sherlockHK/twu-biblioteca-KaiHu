@@ -6,7 +6,8 @@ package com.twu.biblioteca;
 public enum MenuOption {
     checkoutBook("checkoutBook"),
     checkoutMoive("checkoutMoive"),
-    returnBack("returnBack");
+    returnBack("returnBack"),
+    information("information");
 
     private String optionName;
 
