@@ -1,7 +1,6 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Administrator on 2015/6/11.
@@ -16,8 +15,8 @@ public class LibraryMenu {
     private void menuInit() {
         options = new ArrayList<MenuOption>();
 
-        options.add(MenuOption.checkoutBooks);
-        options.add(MenuOption.returnBooks);
+        options.add(MenuOption.checkout);
+        options.add(MenuOption.returnItems);
     }
 
     public ArrayList<MenuOption> getOptions(){

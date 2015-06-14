@@ -21,5 +21,4 @@ public abstract class ItemStore {
     public int itemsCount(){return itemList.size();}
 
     public void reserveItem(Item item){itemList.add(item);}
-
 }

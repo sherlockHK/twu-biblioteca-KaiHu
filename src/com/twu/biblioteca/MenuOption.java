@@ -4,9 +4,8 @@ package com.twu.biblioteca;
  * Created by Administrator on 2015/6/11.
  */
 public enum MenuOption {
-    checkoutBooks("checkoutBooks"),
-    returnBooks("returnBooks"),
-    exit("exit");
+    checkout("checkout"),
+    returnItems("returnItems");
 
     private String optionName;
 
