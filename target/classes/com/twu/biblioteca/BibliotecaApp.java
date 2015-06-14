@@ -1,7 +1,11 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.model.BookStore;
+import com.twu.biblioteca.util.ConsolePrinter;
+import com.twu.biblioteca.util.CustomerInput;
+
 public class BibliotecaApp {
-    private  CustomerInput input;
+    private CustomerInput input;
     private static LibraryMenu menu;
     private Customer customer;
     private BookStore bookStore;
@@ -28,7 +32,7 @@ public class BibliotecaApp {
     }
 
     public void welcome(){
-        System.out.println("********Welcome to The Bangalore Public Library!********");
+        consolePrinter.print("********Welcome to The Bangalore Public Library!********");
     }
 
     public void showMenu() {

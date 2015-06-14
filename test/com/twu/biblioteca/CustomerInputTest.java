@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.util.CustomerInput;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;

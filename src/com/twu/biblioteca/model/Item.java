@@ -1,9 +1,9 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.model;
 
 /**
  * Created by Administrator on 2015/6/12.
  */
-abstract class Item {
+public abstract class Item {
     private String name;
     private String author;
     private String releaseYear;
