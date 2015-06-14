@@ -26,12 +26,4 @@ public class LibraryMenu {
         return options;
     }
 
-//    @Override
-//    public String toString() {
-//        String printString = "mainMenu:";
-//        for (int i = 1; i <= options.length; i++) {
-//            printString += "\n"+i+"."+options[i-1];
-//        }
-//        return printString;
-//    }
 }

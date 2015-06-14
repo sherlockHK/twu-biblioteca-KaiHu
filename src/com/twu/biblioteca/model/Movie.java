@@ -11,10 +11,6 @@ public class Movie extends Item{
         this.rating = rating;
     }
 
-    public int getRating() {
-        return rating;
-    }
-
     @Override
     public String toString() {
         return this.getName()+" "+this.getAuthor()+" "+this.rating+" "+this.getReleaseYear();

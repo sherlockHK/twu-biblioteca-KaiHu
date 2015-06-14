@@ -24,25 +24,4 @@ public class BookStore extends ItemStore {
         itemList.add(book_four);
         itemList.add(book_five);
     }
-//
-//    @Override
-//    public List<Item> itemList(){
-//        return itemList;
-//    }
-
-//    public ArrayList<Book> allBookList() {
-//        return bookList;
-//    }
-//
-//    public void checkoutBook(int choice) {
-//        bookList.remove(choice-1);
-//    }
-//
-//    public int bookCount(){
-//        return bookList.size();
-//    }
-//
-//    public void reserveBook(Book book) {
-//        bookList.add(book);
-//    }
 }
