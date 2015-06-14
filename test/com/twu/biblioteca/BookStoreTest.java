@@ -18,24 +18,24 @@ public class BookStoreTest {
 
     @Test
     public void testAllBookList() throws Exception {
-        assertEquals(5,bookStore.allBookList().size());
+        assertEquals(5,bookStore.itemList().size());
     }
 
     @Test
     public void allBookList_should_reduce_one_after_checkout() throws Exception {
-        bookStore.checkoutBook(1);
-        assertEquals(4,bookStore.allBookList().size());
+        bookStore.checkoutItem(1);
+        assertEquals(4,bookStore.itemList().size());
     }
 
     @Test
     public void bookList_should_be_5() throws Exception {
-        assertEquals(5,bookStore.bookCount());
+        assertEquals(5,bookStore.itemsCount());
     }
 
     @Test
     public void allBookList_should_add_one_after_reserveBook() throws Exception {
         Book book = new Book("A","B","C");
-        bookStore.reserveBook(book);
-        assertEquals(6,bookStore.bookCount());
+        bookStore.reserveItem(book);
+        assertEquals(6,bookStore.itemsCount());
     }
 }

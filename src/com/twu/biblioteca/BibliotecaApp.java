@@ -62,7 +62,7 @@ public class BibliotecaApp {
 
     private void showAllBooks(){
         consolePrinter.print("BookList:");
-        consolePrinter.printList(bookStore.allBookList());
+        consolePrinter.printList(bookStore.itemList());
     }
 
     private void showLoanBooks(){
@@ -71,17 +71,17 @@ public class BibliotecaApp {
     }
 
     private void checkoutBook(int choice) {
-        if (isChoiceValid(bookStore.bookCount(),choice)){
-            customer.borrowBook(bookStore.allBookList().get(choice - 1));
-            bookStore.checkoutBook(choice);
+        if (isChoiceValid(bookStore.itemsCount(),choice)){
+            customer.borrowBook(bookStore.itemList().get(choice-1));
+            bookStore.checkoutItem(choice);
             consolePrinter.print("Thank you !Enjoy the book!");
         }
     }
 
     private void returnBookToBookStore(int choice) {
         if (isChoiceValid(customer.getBorrowedBooks().size(),choice)){
+            bookStore.reserveItem(customer.getBorrowedBooks().get(choice - 1));
             customer.returnBook(choice - 1);
-            bookStore.reserveBook(bookStore.allBookList().get(choice - 1));
             consolePrinter.print("Thank you for returning the book!");
         }
     }

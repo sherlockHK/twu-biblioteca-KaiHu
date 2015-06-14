@@ -1,19 +1,22 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * Created by Administrator on 2015/6/4.
  */
 public class Customer {
-    private ArrayList<Book> borrowedBooks = new ArrayList<Book>();
+    private ArrayList<Item> borrowedBooks;
 
-    public ArrayList<Book> getBorrowedBooks() {
+    public Customer() {
+        this.borrowedBooks = new ArrayList<Item>();
+    }
+
+    public ArrayList<Item> getBorrowedBooks() {
         return borrowedBooks;
     }
 
-    public void borrowBook(Book book){
+    public void borrowBook(Item book){
         borrowedBooks.add(book);
     }
 
