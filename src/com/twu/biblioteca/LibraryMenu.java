@@ -15,8 +15,10 @@ public class LibraryMenu {
     private void menuInit() {
         options = new ArrayList<MenuOption>();
 
-        options.add(MenuOption.checkout);
-        options.add(MenuOption.returnItems);
+        options.add(MenuOption.checkoutBook);
+        options.add(MenuOption.checkoutMoive);
+        options.add(MenuOption.returnBack);
+
     }
 
     public ArrayList<MenuOption> getOptions(){

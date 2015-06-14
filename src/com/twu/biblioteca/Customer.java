@@ -7,24 +7,35 @@ import java.util.ArrayList;
 /**
  * Created by Administrator on 2015/6/4.
  */
-public class Customer {
-    private ArrayList<Item> borrowedBooks;
+public class Customer implements BorrowingAuthority,DisplayInformationAuhority {
+    String name;
+    String emailAdress;
+    int phoneNumber;
+
+    private ArrayList<Item> borrowedItems;
 
     public Customer() {
-        this.borrowedBooks = new ArrayList<Item>();
+        this.borrowedItems = new ArrayList<Item>();
     }
 
-    public ArrayList<Item> getBorrowedBooks() {
-        return borrowedBooks;
+    @Override
+    public ArrayList<Item> getBorrowedItems() {
+        return borrowedItems;
     }
 
-    public void borrowBook(Item book){
-        borrowedBooks.add(book);
+    @Override
+    public void borrowItem(Item book){
+        borrowedItems.add(book);
     }
 
-    public void returnBook(int choice){
-        borrowedBooks.remove(choice);
+    @Override
+    public void returnItem(int choice){
+        borrowedItems.remove(choice);
     }
 
-
+    @Override
+    public String customerInformation() {
+        return "************Customer Information************"+
+                "Name:"+this.name+"\n"+"Email:"+this.emailAdress+"\n"+"PhoneNumber:"+this.phoneNumber;
+    }
 }

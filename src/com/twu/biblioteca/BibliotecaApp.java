@@ -1,14 +1,17 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.model.BookStore;
+import com.twu.biblioteca.model.*;
 import com.twu.biblioteca.util.ConsolePrinter;
 import com.twu.biblioteca.util.CustomerInput;
+
+import java.util.ArrayList;
 
 public class BibliotecaApp {
     private CustomerInput input;
     private static LibraryMenu menu;
     private Customer customer;
     private BookStore bookStore;
+    private MovieStore movieStore;
     private ConsolePrinter consolePrinter;
 
     public BibliotecaApp() {
@@ -16,6 +19,7 @@ public class BibliotecaApp {
         menu = new LibraryMenu();
         customer = new Customer();
         bookStore = new BookStore();
+        movieStore = new MovieStore();
         consolePrinter = new ConsolePrinter();
     }
 
@@ -44,22 +48,25 @@ public class BibliotecaApp {
         return input.makeChoice();
     }
 
-    private int bookChoice(){
-        return input.chooseBook();
-    }
-
     private void handleWithChoice(int choice){
-        int bookSelect;
+        int selection;
         switch (choice){
             case 1:
                 showAllBooks();
-                bookSelect = bookChoice();
-                checkoutBook(bookSelect);
+                selection = input.chooseBook();
+                checkoutItem(bookStore, selection);
                 break;
             case 2:
+                showAllMoives();
+                selection = input.chooseMovie();
+                checkoutItem(movieStore, selection);
+                break;
+            case 3:
                 showLoanBooks();
-                bookSelect = bookChoice();
-                returnBookToBookStore(bookSelect);
+                selection = input.chooseBook();
+                returnBack(selection);
+                break;
+            case 4:
                 break;
         }
     }
@@ -69,25 +76,38 @@ public class BibliotecaApp {
         consolePrinter.printList(bookStore.itemList());
     }
 
+    private void showAllMoives(){
+        consolePrinter.print("MovieList:");
+        consolePrinter.printList(movieStore.itemList());
+    }
+
     private void showLoanBooks(){
-        consolePrinter.print("LoanBooks:");
-        consolePrinter.printList(customer.getBorrowedBooks());
+        consolePrinter.print("LoanItems:");
+        consolePrinter.printList(customer.getBorrowedItems());
     }
 
-    private void checkoutBook(int choice) {
-        if (isChoiceValid(bookStore.itemsCount(),choice)){
-            customer.borrowBook(bookStore.itemList().get(choice-1));
-            bookStore.checkoutItem(choice);
-            consolePrinter.print("Thank you !Enjoy the book!");
+    private void checkoutItem(ItemStore store,int choice) {
+        if (isChoiceValid(store.itemsCount(),choice)){
+            customer.borrowItem(store.itemList().get(choice - 1));
+            store.checkoutItem(choice);
+            if (store.getClass().equals(BookStore.class))
+                consolePrinter.print("Thank you !Enjoy the book!");
+            else if (store.getClass().equals(MovieStore.class))
+                consolePrinter.print("Thank you !Enjoy the movie!");
         }
     }
 
-    private void returnBookToBookStore(int choice) {
-        if (isChoiceValid(customer.getBorrowedBooks().size(),choice)){
-            bookStore.reserveItem(customer.getBorrowedBooks().get(choice - 1));
-            customer.returnBook(choice - 1);
-            consolePrinter.print("Thank you for returning the book!");
-        }
+    private void returnBack(int choice) {
+        ArrayList<Item> items = customer.getBorrowedItems();
+        if (isChoiceValid(items.size(),choice))
+            if (items.get(0).getClass().equals(Book.class)){
+                bookStore.reserveItem(items.get(choice - 1)); //
+                consolePrinter.print("Thank you for returning the book!");
+            }else if (items.get(0).getClass().equals(Movie.class)){
+                movieStore.reserveItem(items.get(choice - 1)); //
+                consolePrinter.print("Thank you for returning the movie!");
+            }
+            customer.returnItem(choice - 1);
     }
 
     private boolean isChoiceValid(int optionsCount,int choice){

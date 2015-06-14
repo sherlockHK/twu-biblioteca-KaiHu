@@ -10,6 +10,6 @@ public class LibraryMenuTest {
     @Test
     public void testMainMenu() throws Exception {
         LibraryMenu menu = new LibraryMenu();
-        assertEquals(3,menu.getOptions().size());
+        assertEquals(4,menu.getOptions().size());
     }
 }

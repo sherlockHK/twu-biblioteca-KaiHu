@@ -26,4 +26,9 @@ public class CustomerInput {
         int choice = scanner.nextInt();
         return choice;
     }
+
+    public int chooseMovie(){
+        System.out.println("Select a book with index:");
+        return chooseNum();
+    }
 }
