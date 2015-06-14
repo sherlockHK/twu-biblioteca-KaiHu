@@ -17,7 +17,7 @@ public class BibliotecaApp {
     public BibliotecaApp() {
         input = new CustomerInput();
         menu = new LibraryMenu();
-        customer = new Customer();
+        customer = new Customer("KaiHu","abc@hotmail.com",123456);
         bookStore = new BookStore();
         movieStore = new MovieStore();
         consolePrinter = new ConsolePrinter();
@@ -100,10 +100,10 @@ public class BibliotecaApp {
     private void returnBack(int choice) {
         ArrayList<Item> items = customer.getBorrowedItems();
         if (isChoiceValid(items.size(),choice))
-            if (items.get(0).getClass().equals(Book.class)){
+            if (items.get(choice-1).getClass().equals(Book.class)){
                 bookStore.reserveItem(items.get(choice - 1)); //
                 consolePrinter.print("Thank you for returning the book!");
-            }else if (items.get(0).getClass().equals(Movie.class)){
+            }else if (items.get(choice-1).getClass().equals(Movie.class)){
                 movieStore.reserveItem(items.get(choice - 1)); //
                 consolePrinter.print("Thank you for returning the movie!");
             }
